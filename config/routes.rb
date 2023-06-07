@@ -16,11 +16,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
   root to: 'homes#top'
+  resources :games, only:[:index, :create, :show, :edit, :update, :destroy]
 end
 
 namespace :public do
   root to: 'homes#top'
-  get '/about' => 'homes#about'
+  get '/homes/about' => 'homes#about', as: 'about'
+  resources :games
 end
 
 end
