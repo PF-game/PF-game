@@ -16,11 +16,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
 namespace :admin do
-  
+  root to: 'homes#top'
 end
 
 namespace :public do
-  
+  root to: 'homes#top'
 end
 
 end
