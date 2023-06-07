@@ -4,28 +4,28 @@
       <div class="mx-0">
         <h1><%= link_to image_tag('げ～むちゅう.png', size: '125x125'), public_root_path %></h1>
       </div>
-      
+
       <h1 class="text-center mt-0" style="font-family: 'Sacramento', cursive;">げ～むちゅう</h1>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          
+
           <!--顧客ログイン-->
         <% if customer_signed_in? %>
         <div class="mr-8 mt-2">
-          <i class="fas fa-child"></i><%= current_customer.name %>ログインしました<i class="fas fa-child"></i>
+          <i class="fas fa-child"></i><%= current_customer.name %>がログインしました<i class="fas fa-child"></i>
           </div>
           <li>
-            <%= link_to customers_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-user-check"></i>マイページ
             <% end %>
           </li>
           <li>
-            <%= link_to items_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-cookie-bite"></i> レビュー一覧
             <% end %>
           </li>
           <li>
-            <%= link_to cart_items_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-shopping-cart"></i>カート
             <% end %>
           </li>
@@ -34,19 +34,19 @@
             <i class="fas fa-user-slash"></i>ログアウト
             <% end %>
           </li>
-        
+
         <!--管理者ログイン-->
         <% elsif admin_signed_in? %>
           <div class="mr-8 mt-2">
               <i class="fas fa-user-astronaut"></i>管理者ログイン<i class="fas fa-user-astronaut"></i>
           </div>
           <li>
-            <%= link_to admin_items_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-list-ol"></i>商品一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_customers_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-users"></i>会員一覧
             <% end %>
           </li>
@@ -56,7 +56,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to admin_genres_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-tags"></i>ジャンル一覧
             <% end %>
           </li>
@@ -65,7 +65,7 @@
              <i class="fas fa-user-slash"></i>ログアウト
             <% end %>
           </li>
-          
+
           <!--未ログイン-->
         <% else %>
         <div class="mr-8 mt-2">
@@ -77,7 +77,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to items_path, class:'nav-link text-dark' do %>
+            <%= link_to  class:'nav-link text-dark' do %>
             <i class="fas fa-list-ol"></i>レビュー一覧
             <% end %>
           </li>
