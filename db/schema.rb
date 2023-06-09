@@ -40,20 +40,21 @@ ActiveRecord::Schema.define(version: 2023_06_07_081452) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "game_id"
+    t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "review_comments", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "game_id"
+    t.integer "review_id"
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "customer_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
