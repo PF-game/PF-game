@@ -14,15 +14,16 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
 
+
 namespace :admin do
   root to: 'homes#top'
   resources :reviews, only:[:index, :create, :show, :edit, :update, :destroy]
-  
+
 end
 
-namespace :public do
+scope module: :public do
   root to: 'homes#top'
-  get '/homes/about' => 'homes#about', as: 'about'
+  get '/about' => 'homes#about', as: 'about'
   resources :reviews
 end
 

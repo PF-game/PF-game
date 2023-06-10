@@ -4,7 +4,7 @@
     <% if customer_signed_in? %>
       <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
         <div class="navbar navbar-brand">
-          <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), public_root_path %>
+          <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), root_path %>
         </div>
       </div>
       <h5 class="mb-0", style="color: #DDE6ED;"><%= current_customer.name %>がログインしました</h5>
@@ -12,14 +12,14 @@
     <% elsif admin_signed_in? %>
       <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
         <div class="navbar navbar-brand">
-        <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), public_root_path %>
+        <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), root_path %>
         </div>
       </div>
        <h5 class="mb-0", style="color: #DDE6ED;">管理者ログイン</h5>
 
     <% else %>
       <div class="navbar navbar-brand ms-5">
-        <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), public_root_path %>
+        <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), root_path %>
       </div>
       <h5 class="mb-0", style="color: #DDE6ED;">ゲストログイン</h5>
     <% end %>
@@ -40,8 +40,8 @@
           <% end %>
         </li>
         <li>
-          <%= link_to class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fas fa-shopping-cart"></i>カート
+          <%= link_to new_review_path, class: "nav-link", style: "color: #DDE6ED;" do %>
+            <i class="fas fa-shopping-cart"></i>投稿フォーム
           <% end %>
         </li>
         <li>
@@ -80,7 +80,7 @@
       <!--未ログイン-->
       <% else %>
         <li>
-          <%= link_to public_about_path, class: "nav-link", style: "color: #DDE6ED;" do %>
+          <%= link_to about_path, class: "nav-link", style: "color: #DDE6ED;" do %>
             <i class="fas fa-wifi"></i>About
           <% end %>
         </li>

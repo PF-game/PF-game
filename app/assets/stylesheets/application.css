@@ -19,11 +19,11 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: 'Shippori Mincho', sans-serif;
+   font-family: 'Shippori Mincho', serif;
  }
- 
+
  main {
    min-height: 100vh;
-   background-color: #E5E5CB;
-   color: #1A120B;
+   background-color: #DDE6ED;
+   color: #03001C;
  }
