@@ -6,9 +6,9 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review = customer_id = current_customer.id
+    @review.customer_id = current_customer.id
     @review.save
-    redirect_to public_reviews_path
+    redirect_to reviews_path
   end
 
   def index
@@ -16,6 +16,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
+    @review = Review.find(params[:id])
   end
 
 

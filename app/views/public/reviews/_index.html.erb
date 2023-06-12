@@ -1,4 +1,36 @@
-<% @reviews.each do |review| %>
-<div>
-  
-</div>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= reviews.each do |review| %>
+    <tr>
+      <td>
+        <%= link_to(review.customer.name) do %>
+        <%= image_tag review.customer.get_profile_image, size:'50x50' %>
+        <% end %>
+      </td>
+      <td><%= link_to review.title, review %></td>
+      <td><%= review.body %></td>
+        <td>
+          <div id="star<%= review.id %>"></div>
+          <script>
+            document.getElementById('star').innerHTML = ''
+            raty(document.getElementById('star'), {
+              starOn: '<%= asset_path('star-on.png') %>',
+              starOff: '<%= asset_path('star-off.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              scoreName: 'post[star]',
+              half: true,
+            })
+          </script>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
