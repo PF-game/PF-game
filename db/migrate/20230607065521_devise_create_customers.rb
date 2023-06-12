@@ -34,6 +34,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
       ## 名前を保存するカラム
       t.string :name, null: :false
+      t.text :introduction
       t.boolean :is_deleted, null: :false, default: false
 
 
