@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>レビュー詳細</h2>
+      <table class="table">
+        <tr>
+          <td>
+            <%= link_to(@review.customer) do %>
+            <%= image_tag @review.customer.get_profile_image, size:"100x100" %><br>
+            <%= @review.customer.name %>
+            <% end %>
+          </td>
+          <td><%= link_to @review.title, @review %></td>
+          <td><%= @review.body %></td>
+            <% if @review.customer == current_customer %>
+          <td><%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
+          <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+            <% end %>
+          <td>
+          <div id="star<%= review.id %>"></div>
+          <script>
+            document.getElementById('star').innerHTML = ''
+            raty(document.getElementById('star'), {
+              starOn: '<%= asset_path('star-on.png') %>',
+              starOff: '<%= asset_path('star-off.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              scoreName: 'post[star]',
+              half: true,
+            })
+          </script>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
