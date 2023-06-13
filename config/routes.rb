@@ -25,7 +25,7 @@ scope module: :public do
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
   resources :reviews
-  resources :customers, only:[:show, :edit]
+  resources :customers, only:[:show, :edit, :update]
 end
 
 end

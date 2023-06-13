@@ -8,14 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    <%= reviews.each do |review| %>
+    <% reviews.each do |review| %>
     <tr>
       <td>
-        <%= link_to(review.customer.name) do %>
+        <%= link_to(review.customer) do %>
         <%= image_tag review.customer.get_profile_image, size:'50x50' %>
         <% end %>
       </td>
-      <td><%= link_to review.title, review %></td>
+      <td><%= link_to review.title,review %></td>
       <td><%= review.body %></td>
         <td>
           <div id="star<%= review.id %>"></div>
