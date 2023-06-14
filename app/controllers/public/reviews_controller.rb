@@ -29,6 +29,20 @@ class Public::ReviewsController < ApplicationController
     redirect_to reviews_path
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @review.customer = current_customer
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      redirect_to review_path(@review)
+    else
+      render :edit
+    end
+  end
+
 
   private
 

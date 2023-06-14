@@ -12,23 +12,23 @@
           </td>
           <td><%= link_to @review.title, @review %></td>
           <td><%= @review.body %></td>
+          <td>
+            <div id="star<%= @review.id %>"></div>
+            <script>
+              document.getElementById('star<%= @review.id %>').innerHTML = ''
+              raty(document.getElementById('star<%= @review.id %>'), {
+                starOn: '<%= asset_path('star-on.png') %>',
+                starOff: '<%= asset_path('star-off.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                score: <%= @review.star %>,
+                half: true
+                })
+            </script>
+          </td>
             <% if @review.customer == current_customer %>
           <td><%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
           <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
             <% end %>
-          <td>
-          <div id="star<%= @review.id %>"></div>
-          <script>
-            document.getElementById('star<%= @review.id %>').innerHTML = ''
-            raty(document.getElementById('star<%= @review.id %>'), {
-              starOn: '<%= asset_path('star-on.png') %>',
-              starOff: '<%= asset_path('star-off.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              score: <%= review.star %>,
-              half: true
-            })
-          </script>
-          </td>
         </tr>
       </table>
     </div>
