@@ -19,13 +19,13 @@
           <td>
           <div id="star<%= @review.id %>"></div>
           <script>
-            document.getElementById('star').innerHTML = ''
-            raty(document.getElementById('star'), {
+            document.getElementById('star<%= @review.id %>').innerHTML = ''
+            raty(document.getElementById('star<%= @review.id %>'), {
               starOn: '<%= asset_path('star-on.png') %>',
               starOff: '<%= asset_path('star-off.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
-              scoreName: 'post[star]',
-              half: true,
+              score: <%= review.star %>,
+              half: true
             })
           </script>
           </td>
