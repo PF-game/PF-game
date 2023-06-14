@@ -20,7 +20,20 @@
         </div>
         <div class="card-body">
           <h4 class="card-title"><%= review.title %></h4>
-          <p class="card-text">星★★</p>
+          <p class="card-text">
+          <div id="star<%= review.id %>"></div>
+          <script>
+            document.getElementById('star<%= review.id %>').innerHTML = ''
+            raty(document.getElementById('star<%= review.id %>'), {
+              starOn: '<%= asset_path('star-on.png') %>',
+              starOff: '<%= asset_path('star-off.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              score: <%= review.star %>,
+              size: 36,
+              half: true,
+            })
+          </script>
+          </p>
           <p class="card-text"><small><%= review.body %></small></p>
         </div>
         <% end %>
