@@ -16,7 +16,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.page(params[:page])
   end
 
   def show
