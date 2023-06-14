@@ -1,20 +1,32 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @customers = Customer.all.page(params[:page])
   end
 
   def show
-    @customers = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def edit
-    @customers = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
-  
+
   def update
-    
-  
-  
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to admin_customers_path(@customer)
+    else
+      render :show
+    end
+  end
+
+
+  private
+
+  def customers_params
+    params.require(:customer).permit(:name, :email, :password, :is_deleted)
+  end
+
 end
