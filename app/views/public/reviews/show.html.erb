@@ -17,7 +17,7 @@
           <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
             <% end %>
           <td>
-          <div id="star<%= review.id %>"></div>
+          <div id="star<%= @review.id %>"></div>
           <script>
             document.getElementById('star').innerHTML = ''
             raty(document.getElementById('star'), {
