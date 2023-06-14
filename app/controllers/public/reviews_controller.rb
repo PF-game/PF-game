@@ -7,8 +7,12 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
-    @review.save
-    redirect_to reviews_path
+    if @review.save
+      redirect_to reviews_path
+    else
+      @reviews = Review.all
+      render :index
+    end
   end
 
   def index
