@@ -12,7 +12,7 @@
     <% elsif admin_signed_in? %>
       <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
         <div class="navbar navbar-brand">
-        <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), root_path %>
+        <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), admin_root_path %>
         </div>
       </div>
        <h5 class="mb-0", style="color: #DDE6ED;">管理者ログイン</h5>
@@ -30,7 +30,7 @@
       <!--顧客ログイン-->
       <% if customer_signed_in? %>
         <li class="nav-item">
-          <%= link_to customer_path(current_customer.id), class: "nav-link", style: "color: #DDE6ED;" do %>
+          <%= link_to customer_path(current_customer.id), class:"nav-link", style: "color: #DDE6ED;" do %>
             <i class="fas fa-user-check"></i>マイページ
           <% end %>
         </li>
@@ -52,20 +52,20 @@
       <!--管理者ログイン-->
       <% elsif admin_signed_in? %>
         <li>
-          <%= link_to reviews_path, class: "nav-link", style: "color: #DDE6ED;" do %>
+          <%= link_to admin_root_path, class: "nav-link", style: "color: #DDE6ED;" do %>
             <i class="fas fa-list-ol"></i>レビュー一覧
           <% end %>
         </li>
         <li>
-          <%= link_to class: "nav-link", style: "color: #DDE6ED;" do %>
+          <%= link_to admin_customers_path, class: "nav-link", style: "color: #DDE6ED;" do %>
             <i class="fas fa-users"></i>ユーザー一覧
           <% end %>
         </li>
-        <li>
-          <%= link_to admin_root_path, class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fab fa-opencart"></i>注文履歴一覧
-          <% end %>
-        </li>
+        <!--<li>-->
+        <!--  <%= link_to admin_root_path, class: "nav-link", style: "color: #DDE6ED;" do %>-->
+        <!--    <i class="fab fa-opencart"></i>注文履歴一覧-->
+        <!--  <% end %>-->
+        <!--</li>-->
         <li>
           <%= link_to class: "nav-link", style: "color: #DDE6ED;" do %>
             <i class="fas fa-tags"></i>ジャンル一覧
