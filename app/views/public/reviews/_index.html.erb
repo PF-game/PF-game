@@ -12,11 +12,21 @@
     <% reviews.each do |review| %>
     <tr>
       <td>
-        <%= link_to(review.customer) do %>
-        <%= image_tag review.customer.get_profile_image, size:'50x50' %>
+        <% if admin_signed_in? %>
+          <%= link_to admin_review_path(review) do %>
+          <%= image_tag review.customer.get_profile_image, size:'50x50' %>
+          <% end %>
+        <% else %>
+          <%= link_to(review.customer) do %>
+          <%= image_tag review.customer.get_profile_image, size:'50x50' %>
+          <% end %>
         <% end %>
       </td>
+      <% if admin_signed_in? %>
+        <td><%= link_to review.title,admin_review_path(review) %></td>
+      <% else %>
       <td><%= link_to review.title,review %></td>
+      <% end %>
       <td><%= review.body %></td>
         <td>
           <div id="star<%= review.id %>"></div>

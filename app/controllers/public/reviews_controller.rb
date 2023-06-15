@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
+  # before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @review = Review.new
@@ -33,7 +33,11 @@ class Public::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @review.customer = current_customer
+    if @review.customer = current_customer
+      render :edit
+    else
+      redirect_to reviews_path
+    end
   end
 
   def update
@@ -52,12 +56,12 @@ class Public::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title, :body, :star)
   end
-  
-  def is_matching_login_user
-    review = Review.find(params[:id])
-    unless review.id == current_customer.id
-      redirect_to reviews_path
-    end
-  end
+
+  # def is_matching_login_user
+  #   review = Review.find(params[:id])
+  #   unless review.id == current_customer.id
+  #     redirect_to edit_review_path
+  #   end
+  # end
 
 end
