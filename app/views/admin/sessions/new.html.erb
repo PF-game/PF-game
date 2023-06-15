@@ -6,7 +6,8 @@
     </div>
     
     <div class="mx-auto col-8">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <!--<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+    <%= form_with model: @admin, url: admin_session_path do |f| %>
     <div class="row">
         <div class="col-sm-3 px-sm-0 offset-sm-1">
         <%= f.label :"メールアドレス" %><br />
