@@ -7,12 +7,13 @@
 
 <h2 class="text-center"><strong>新着レビュー</strong></h2>
 
+ <div class="items dw-100">
 <div class="row w-100 align-items-center justify-content-center">
-  <!--<div class="col-lg-2"></div>-->
-  <div class="col-lg-10">
     <div class="card-deck" class="col-sm-3">
       <% @reviews.each do |review| %>
-        <div class="card bg-secondary">
+      <div class="col-3">
+      <div class="item my-3">
+        <div class="card" style="background-color: #537188;">
           <%= link_to review_path(review), style: "color: #DDE6ED;" do %>
         <div class="card-header">
           <%= image_tag review.customer.get_profile_image, size:'30x30' %>
@@ -29,7 +30,6 @@
               starOff: '<%= asset_path('star-off.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
               score: <%= review.star %>,
-              size: 36,
               half: true,
             })
           </script>
@@ -38,10 +38,14 @@
         </div>
         <% end %>
       </div>
+      </div>
+      </div>
       <% end %>
     </div>
+  </div>
+  </div>
 
-    <div class="mt-3 text-right">
+    <div class="mt-3 text-center">
       <%= link_to "全てのレビューを見る >>", reviews_path %>
     </div>
 
