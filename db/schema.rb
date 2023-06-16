@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_13_005216) do
+ActiveRecord::Schema.define(version: 2023_06_16_142118) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 2023_06_13_005216) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "game_tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_game_tags_on_name", unique: true
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "review_id"
@@ -82,6 +89,16 @@ ActiveRecord::Schema.define(version: 2023_06_13_005216) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "review_tags", force: :cascade do |t|
+    t.integer "review_id", null: false
+    t.integer "game_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "\"review_tag_id\", \"game_tag_id\"", name: "index_review_tags_on_review_tag_id_and_game_tag_id", unique: true
+    t.index ["game_tag_id"], name: "index_review_tags_on_game_tag_id"
+    t.index ["review_id"], name: "index_review_tags_on_review_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "customer_id"
     t.string "title"
@@ -93,4 +110,6 @@ ActiveRecord::Schema.define(version: 2023_06_13_005216) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "review_tags", "game_tags"
+  add_foreign_key "review_tags", "reviews"
 end
