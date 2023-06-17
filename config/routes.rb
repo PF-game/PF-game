@@ -25,6 +25,7 @@ end
 scope module: :public do
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
+  get "search_tag" => "reviews#search_tag"
   resources :reviews
   resources :customers, only:[:show, :edit, :update]
 end
