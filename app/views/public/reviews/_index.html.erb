@@ -1,0 +1,54 @@
+  <!--タグリスト-->
+<% @tag_list.each do |list| %>
+  <i class="fa-sharp fa-solid fa-tag"></i>
+  <%= link_to list.name, search_tag_path(game_tag_id: list.id) %>
+  <%= "(#{list.reviews.count})" %>
+<% end %>
+
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>評価</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% reviews.each do |review| %>
+    <tr>
+      <td>
+        <% if admin_signed_in? %>
+          <%= link_to admin_review_path(review) do %>
+          <%= image_tag review.customer.get_profile_image, size:'50x50' %>
+          <% end %>
+        <% else %>
+          <%= link_to(review.customer) do %>
+          <%= image_tag review.customer.get_profile_image, size:'50x50' %>
+          <% end %>
+        <% end %>
+      </td>
+      <% if admin_signed_in? %>
+        <td><%= link_to review.title,admin_review_path(review) %></td>
+      <% else %>
+      <td><%= link_to review.title,review %></td>
+      <% end %>
+      <td><%= review.body %></td>
+        <td>
+          <div id="star<%= review.id %>"></div>
+          <script>
+            document.getElementById('star<%= review.id %>').innerHTML = ''
+            raty(document.getElementById('star<%= review.id %>'), {
+              starOn: '<%= asset_path('star-on.png') %>',
+              starOff: '<%= asset_path('star-off.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              score: <%= review.star %>,
+              half: true
+            })
+          </script>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

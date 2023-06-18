@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+
+ *{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Shippori Mincho', serif;
+ }
+
+ main {
+   min-height: 100vh;
+   background-color: #DDE6ED;
+   color: #03001C;
+ }

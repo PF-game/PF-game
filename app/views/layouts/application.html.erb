@@ -2,15 +2,29 @@
 <html>
   <head>
     <title>RecommendationGame</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/5e119f480b.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
+
   </head>
 
-  <body>
+  <body id="wrapper" style="background-color: #DDE6ED; font-family: 'Shippori Mincho'; color: #03001C;">
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+
+    <main>
+      <div class="mt-3 text-center">
+    </main>
+
     <%= yield %>
   </body>
 </html>
