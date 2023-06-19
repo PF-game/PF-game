@@ -41,9 +41,11 @@
   </div>
 </div>
 
+  <% if customer.name != "guestuser" %>
   <div class="form-group">
     <div class="col-md-9">
     <%= f.submit '投稿', class: 'btn btn-success' %>
     </div>
-  </div>
+  </div
   <% end %>
+<% end %>

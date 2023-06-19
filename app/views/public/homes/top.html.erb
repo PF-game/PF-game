@@ -1,53 +1,18 @@
 <div class="container about d-flex align-items-center justify-content-center mt-5">
   <div class="row mb-4">
-      <%= image_tag "samune.png", size: "600x300", class: "image" %>
+    <%= image_tag "samune.png", size: "600x300", class: "image" %>
   </div>
-</div>
-
-
-<h2 class="text-center"><strong>新着レビュー</strong></h2>
-
- <div class="items dw-100">
-<div class="row w-100 align-items-center justify-content-center">
-    <div class="card-deck" class="col-sm-3">
-      <% @reviews.each do |review| %>
-      <div class="col-3">
-      <div class="item my-3">
-        <div class="card" style="background-color: #537188;">
-          <%= link_to review_path(review), style: "color: #DDE6ED;" do %>
-        <div class="card-header">
-          <%= image_tag review.customer.get_profile_image, size:'30x30' %>
-          <%= review.customer.name %>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title"><%= review.title %></h4>
-          <p class="card-text">
-          <div id="star<%= review.id %>"></div>
-          <script>
-            document.getElementById('star<%= review.id %>').innerHTML = ''
-            raty(document.getElementById('star<%= review.id %>'), {
-              starOn: '<%= asset_path('star-on.png') %>',
-              starOff: '<%= asset_path('star-off.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              score: <%= review.star %>,
-              half: true,
-            })
-          </script>
-          </p>
-          <p class="card-text"><small><%= review.body %></small></p>
-        </div>
-        <% end %>
+  <div class='mx-auto'>
+    <div class="btn-wrapper col-12 mx-auto">
+      <div class="row">
+        <%= link_to 'ゲストログイン（閲覧用）', guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
       </div>
+      <div class="row">
+        <%= link_to 'ログイン',new_customer_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
       </div>
+      <div class="row">
+        <%= link_to '新規登録',new_customer_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
       </div>
-      <% end %>
     </div>
-  </div>
-  </div>
-
-    <div class="mt-3 text-center">
-      <%= link_to "全てのレビューを見る >>", reviews_path %>
-    </div>
-
   </div>
 </div>
