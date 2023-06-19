@@ -2,9 +2,13 @@
 
 class Public::SessionsController < Devise::SessionsController
   before_action :customer_state, only: [:create]
-  
 
-  
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to reviews_path, notice: 'ゲストでログインしました。'
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -26,14 +30,14 @@ class Public::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def after_sign_in_path_for(resource)
-     root_path
+     reviews_path
   end
 
   def after_sign_out_path_for(resource)
     root_path
   end
-  
-  
+
+
   protected
 # 退会しているかを判断するメソッド
   def customer_state
@@ -50,6 +54,6 @@ class Public::SessionsController < Devise::SessionsController
       flash[:notice] = "項目を入力してください"
     end
   end
-  
-  
+
+
 end

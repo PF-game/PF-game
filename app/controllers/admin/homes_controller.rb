@@ -3,6 +3,7 @@ class Admin::HomesController < ApplicationController
 
 def top
   @reviews = Review.all.page(params[:page])
+  @tag_list = GameTag.all
 end
 
 end

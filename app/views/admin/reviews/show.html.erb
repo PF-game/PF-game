@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <h2>レビュー詳細!!</h2>
+    <div class="col-md-12">
+      <h2>レビュー詳細</h2>
       <table class="table">
         <tr>
           <td>
@@ -24,6 +24,15 @@
                 half: true
                 })
             </script>
+          </td>
+        <!-- タグリスト -->
+        <% @review_tags.each do |tag| %>
+        <td>
+          <i class="fa-sharp fa-solid fa-tag"></i>
+            <%= link_to tag.name, search_tag_path(game_tag_id: tag.id) %>
+        </td>
+        <% end %>
+
           </td>
             <%# if @review.customer == current_customer %>
           <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
