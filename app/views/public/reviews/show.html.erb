@@ -32,9 +32,13 @@
             </script>
           </td>
         </tr>
+        <tr>
+          <td id="favorite_btn_<%= @review.id %>">
+            <%= render 'public/favorites/favorite', review: @review %>
+          </td>
+        </tr>
 
          <!-- タグリスト -->
-
         <% @review_tags.each do |tag| %>
         <tr>
           <td>
