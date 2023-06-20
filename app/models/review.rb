@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   # タグのリレーションのみ記載
   has_many :review_tags, dependent: :destroy
   has_many :game_tags, through: :review_tags
+  has_many :favorites, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
@@ -29,6 +30,10 @@ class Review < ApplicationRecord
       game_tag = GameTag.find_or_create_by(name:new_name)
       self.game_tags << game_tag
     end
+  end
+
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
 end

@@ -30,7 +30,9 @@ scope module: :public do
   devise_scope :customer do
     post '/guest_sign_in', to: 'sessions#guest_sign_in'
   end
-  resources :reviews
+  resources :reviews do
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :customers, only:[:show, :edit, :update]
 end
 

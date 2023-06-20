@@ -9,11 +9,11 @@
 
 <div class="container-fluid mt-3">
  <div class="items dw-100">
-<div class="row w-100 align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center">
     <div class="card-deck d-block" class="col-sm-3">
       <% @reviews.each do |review| %>
-      <div class="col-3">
-      <div class="item my-3">
+      <div class="col-5">
+      <div class="item my-5">
         <div class="card d-block" style="background-color: #537188;">
           <%= link_to review_path(review), style: "color: #DDE6ED;" do %>
         <div class="card-header">

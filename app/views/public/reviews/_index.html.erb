@@ -9,7 +9,7 @@
 <div class="container-fluid mt-3">
  <div class="items dw-100">
 <div class="row w-100 align-items-center justify-content-center">
-    <div class="card-deck" class="col-sm-3">
+    <div class="card-deck" style="width: 100%;" class="col-sm-3">
       <% @reviews.each do |review| %>
       <div class="col-3">
       <div class="item my-3">
@@ -33,6 +33,9 @@
               half: true,
             })
           </script>
+          </p>
+          <p id="favorite_btn_<%= review.id %>" style: "color: #DDE6ED;">
+            <%= render 'public/favorites/favorite', review: review %>
           </p>
           <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
         </div>
