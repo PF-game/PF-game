@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:new, :edit]
 
   def show
     @customer = Customer.find(params[:id])

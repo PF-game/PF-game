@@ -27,7 +27,6 @@ scope module: :public do
   root to: 'homes#top'
   get '/about' => 'homes#about', as: 'about'
   get "search_tag" => "reviews#search_tag"
-  # post '/guest_sign_in', to: 'sessions#guest_sign_in'
   devise_scope :customer do
     post '/guest_sign_in', to: 'sessions#guest_sign_in'
   end
