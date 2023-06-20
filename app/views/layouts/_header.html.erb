@@ -4,7 +4,7 @@
     <% if customer_signed_in? %>
       <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
         <div class="navbar navbar-brand">
-          <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), root_path %>
+          <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), reviews_path %>
         </div>
       </div>
       <h5 class="mb-0", style="color: #DDE6ED;"><%= current_customer.name %>がログインしました</h5>
@@ -21,7 +21,7 @@
       <div class="navbar navbar-brand ms-5">
         <%= link_to image_tag('げ～むちゅう.png', size: '75x75'), root_path %>
       </div>
-      <h5 class="mb-0", style="color: #DDE6ED;">ゲストログイン</h5>
+      <h5 class="mb-0", style="color: #DDE6ED;"></h5>
     <% end %>
   </div>
 
@@ -36,12 +36,12 @@
         </li>
         <li>
           <%= link_to reviews_path, class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fas fa-cookie-bite"></i> レビュー一覧
+            <i class="fa-solid fa-gamepad"></i>レビュー一覧
           <% end %>
         </li>
         <li>
           <%= link_to new_review_path, class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fas fa-shopping-cart"></i>投稿フォーム
+            <i class="fa-solid fa-pen"></i>投稿フォーム
           <% end %>
         </li>
         <li>
@@ -53,7 +53,7 @@
       <% elsif admin_signed_in? %>
         <li>
           <%= link_to admin_root_path, class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fas fa-list-ol"></i>レビュー一覧
+            <i class="fa-solid fa-gamepad"></i>レビュー一覧
           <% end %>
         </li>
         <li>
@@ -61,16 +61,7 @@
             <i class="fas fa-users"></i>ユーザー一覧
           <% end %>
         </li>
-        <!--<li>-->
-        <!--  <%= link_to admin_root_path, class: "nav-link", style: "color: #DDE6ED;" do %>-->
-        <!--    <i class="fab fa-opencart"></i>注文履歴一覧-->
-        <!--  <% end %>-->
-        <!--</li>-->
-        <li>
-          <%= link_to class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fas fa-tags"></i>ジャンル一覧
-          <% end %>
-        </li>
+
         <li>
           <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link", style: "color: #DDE6ED;" do %>
             <i class="fas fa-user-slash"></i>ログアウト
@@ -86,7 +77,7 @@
         </li>
         <li>
           <%= link_to reviews_path, class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fas fa-list-ol"></i>レビュー一覧
+            <i class="fa-solid fa-gamepad"></i>レビュー一覧
           <% end %>
         </li>
         <li>

@@ -37,11 +37,11 @@
 <div class="form-group">
   <label>タグ(,で区切ると複数タグ登録できます)</label>
   <div class="col-md-9">
-    <%= f.text_field :name,value: @tag_list, class: 'form-control' %>
+    <%= f.text_field :name,placeholder: "(例)RPG,ホラー", value: @tag_list, class: 'form-control' %>
   </div>
 </div>
 
-  <% if customer.name != "guestuser" %>
+  <% if current_customer != "guestuser" %>
   <div class="form-group">
     <div class="col-md-9">
     <%= f.submit '投稿', class: 'btn btn-success' %>
