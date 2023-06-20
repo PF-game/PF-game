@@ -76,11 +76,5 @@ class Public::ReviewsController < ApplicationController
     params.require(:review).permit(:title, :body, :star)
   end
 
-  # def is_matching_login_user
-  #   review = Review.find(params[:id])
-  #   unless review.id == current_customer.id
-  #     redirect_to edit_review_path
-  #   end
-  # end
 
 end

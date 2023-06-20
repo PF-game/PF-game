@@ -1,5 +1,4 @@
-<h2>レビュー一覧</h2>
- <!--タグリスト-->
+<h2>タグが<%= @tag.name %>の投稿一覧</h2>
 
 <% @tag_list.each do |list| %>
   <i class="fa-sharp fa-solid fa-tag"></i>
@@ -7,10 +6,11 @@
   <%= "(#{list.reviews.count})" %>
 <% end %>
 
+
 <div class="container-fluid mt-3">
  <div class="items dw-100">
 <div class="row w-100 align-items-center justify-content-center">
-    <div class="card-deck" class="col-sm-3">
+    <div class="card-deck d-block" class="col-sm-3">
       <% @reviews.each do |review| %>
       <div class="col-3">
       <div class="item my-3">
