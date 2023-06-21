@@ -17,7 +17,7 @@
           </tr>
         </table>
 
-          <% if current_customer == @customer %>
+          <% unless @customer.guest_user? %>
             <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary btn-block" do %>
               <i class="fas fa-user-cog"></i>
             <% end %>
