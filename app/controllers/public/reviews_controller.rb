@@ -16,7 +16,7 @@ class Public::ReviewsController < ApplicationController
       redirect_to reviews_path
     else
       @reviews = Review.all
-      render :index
+      render :new
     end
   end
 

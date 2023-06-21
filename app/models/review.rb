@@ -10,13 +10,16 @@ class Review < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :body, length: { maximum: 200 }
-
+  validates :star, presence: true
+  validates :game_tags, presence: true
 
   def save_game_tags(tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.game_tags.pluck(:name) unless self.game_tags.nil?
+
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
     # old_tags = current_tags - tags
+
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
     new_tags = tags - current_tags
 
