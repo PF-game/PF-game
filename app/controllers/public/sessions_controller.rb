@@ -6,7 +6,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
-    redirect_to reviews_path, notice: 'ゲストでログインしました。'
+    redirect_to reviews_path
   end
 
   # before_action :configure_sign_in_params, only: [:create]
