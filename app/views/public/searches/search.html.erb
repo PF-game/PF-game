@@ -1,0 +1,66 @@
+<h2>検索結果一覧</h2>
+
+
+  <!--検索対象モデルがCustomerの時 -->
+<% if @range == "ユーザー" %>
+  <table class="table table-hover table-inverse">
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr><%= image_tag customer.get_profile_image, size: '100x100' %></tr>
+        <tr>
+          <th>ユーザー名</th>
+          <th><%= customer.name %></th>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <th><%= customer.introduction %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+
+    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがReviewの時) -->
+<div class="container-fluid mt-3">
+  <div class="items dw-100">
+    <div class="row w-100 align-items-center justify-content-center">
+      <div class="card-deck" style="width: 100%;" class="col-sm-3">
+        <% @reviews.each do |review| %>
+          <div class="col-3">
+            <div class="item my-3">
+              <div class="card d-block" style="background-color: #537188;">
+                <div class="card-header">
+                  <%= link_to review_path(review), style: "color: #DDE6ED;" do %>
+                    <%= image_tag review.customer.get_profile_image, size:'30x30' %>
+                    <%= review.customer.name %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <%= link_to review_path(review), style: "color: #DDE6ED;" do %>
+                    <h4 class="card-title"><%= review.title %></h4>
+                    <div id="star<%= review.id %>"></div>
+                    <script>
+                      document.getElementById('star<%= review.id %>').innerHTML = ''
+                      raty(document.getElementById('star<%= review.id %>'), {
+                        starOn: '<%= asset_path('star-on.png') %>',
+                        starOff: '<%= asset_path('star-off.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        score: <%= review.star %>,
+                        half: true,
+                      })
+                    </script>
+                    <p id="favorite_btn_<%= review.id %>" style: "color: #343a40;">
+                      <%= render 'public/favorites/favorite', review: review %>
+                    </p>
+                    <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

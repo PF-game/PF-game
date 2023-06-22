@@ -39,4 +39,21 @@ class Review < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @review = Review.where("title LIKE? OR body LIKE?","#{word}","#{word}")
+    elsif search == "forward_match"
+      @review = Review.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @review = Review.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @review = Review.where("title LIKE? OR body LIKE?","%#{word}%","%#{word}%")
+    else
+      @review = Review.all
+    end
+  end
+
+
 end
