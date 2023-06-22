@@ -13,7 +13,7 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       @review.save_game_tags(tag_list)
       flash[:notice] = "投稿が成功しました"
-      redirect_to reviews_path
+      redirect_to review_path(@review)
     else
       @reviews = Review.all
       render :new
