@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   has_many :review_tags, dependent: :destroy
   has_many :game_tags, through: :review_tags
   has_many :favorites, dependent: :destroy
+  has_many :review_comments, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true

@@ -6,7 +6,9 @@ class Customer < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :review_comments, dependent: :destroy
   has_one_attached :profile_image
+  
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }

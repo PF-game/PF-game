@@ -39,6 +39,8 @@ scope module: :public do
   end
   resources :reviews do
     resource :favorites, only: [:create, :destroy]
+    resources :review_comments, only: [:create, :destroy]
+
   end
   resources :customers, only:[:show, :edit, :update]
 end
