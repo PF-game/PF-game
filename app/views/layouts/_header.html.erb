@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg text-center pt-0 pb-0", style="background-color:#3e62ad;">
   <div class="collapse navbar-collapse">
-
     <% if customer_signed_in? %>
       <div class="row d-flex justify-content-around align-items-center col-md-6 ms-5">
         <div class="navbar navbar-brand">
@@ -40,8 +39,10 @@
           <% end %>
         </li>
         <li>
-          <%= link_to new_review_path, class: "nav-link", style: "color: #DDE6ED;" do %>
-            <i class="fa-solid fa-pen"></i>投稿フォーム
+          <% unless current_customer.guest_user? %>
+            <%= link_to new_review_path, class: "nav-link", style: "color: #DDE6ED;" do %>
+              <i class="fa-solid fa-pen"></i>投稿フォーム
+            <% end %>
           <% end %>
         </li>
         <li>
