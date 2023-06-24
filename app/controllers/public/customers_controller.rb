@@ -5,6 +5,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @reviews = @customer.reviews.page(params[:page])
+    @review = Review.find(params[:id])
+
   end
 
   def edit
@@ -16,7 +18,7 @@ class Public::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to customer_path(@customer.id)
   end
-  
+
   def withdraw
     @customer = Customer.find(current_customer.id)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
