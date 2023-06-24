@@ -36,7 +36,6 @@
                       <%= render 'public/favorites/favorite', review: review %>
                     </p>
                     コメント数: <%= review.review_comments.count %>
-                    <p><%= link_to "#{review.review_comments.count} コメント", review_path(review.id) %></p>
                       <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
               </div>
             <% end %>

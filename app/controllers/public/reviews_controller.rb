@@ -29,6 +29,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @tag_list = @review.game_tags.pluck(:name).join(',')
     @review_tags = @review.game_tags
+    @review_comment = ReviewComment.new
   end
 
   def destroy

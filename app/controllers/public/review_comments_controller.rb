@@ -9,10 +9,12 @@ def create
 end
 
 def show
+  @review = Review.find(params[:id])
   @review_comment = ReviewComment.new
 end
 
 def destroy
+  @review = Review.find(params[:review_id])
   ReviewComment.find(params[:id]).destroy
   redirect_to request.referer
 end
