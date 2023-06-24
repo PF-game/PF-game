@@ -7,6 +7,9 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+# current_customer.email === "guest@example.com"
+# current_admin.present?
+
     @review.customer_id = current_customer.id
      # 受け取った値を,で区切って配列にする
     tag_list = params[:review][:name].split(',')

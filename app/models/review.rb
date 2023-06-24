@@ -12,7 +12,7 @@ class Review < ApplicationRecord
   validates :body, presence: true
   validates :body, length: { maximum: 200 }
   validates :star, presence: true
-  validates :game_tags, presence: true
+
 
   def save_game_tags(tags)
   # タグが存在していれば、タグの名前を配列として全て取得
