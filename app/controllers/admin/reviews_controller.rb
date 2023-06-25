@@ -4,6 +4,7 @@ class Admin::ReviewsController < ApplicationController
   def index
     @reviews = Review.all.page(params[:page])
     @tag_list = GameTag.all
+    
   end
 
   def show

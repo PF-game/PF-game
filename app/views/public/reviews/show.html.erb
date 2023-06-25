@@ -32,11 +32,13 @@
             </script>
           </td>
         </tr>
+        <% if current_customer %>
         <tr>
           <td id="favorite_btn_<%= @review.id %>">
             <%= render 'public/favorites/favorite', review: @review %>
           </td>
         </tr>
+        <% end %>
 
          <!-- タグリスト -->
         <% @review_tags.each do |tag| %>
@@ -46,8 +48,8 @@
             <%= link_to tag.name, search_tag_path(game_tag_id: tag.id) %>
           </td>
           <% if @review.customer == current_customer %>
-            <td><%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+            <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
+            <%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
           <% end %>
         </tr>
         <% end %>

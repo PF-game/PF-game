@@ -40,12 +40,10 @@
             <i class="fa-sharp fa-solid fa-tag"></i>
             <%= link_to tag.name, search_tag_path(game_tag_id: tag.id) %>
           </td>
-          <% if @review.customer == current_customer %>
-            <td><%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-          <% end %>
-        </tr>
         <% end %>
+            <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
+            <%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        </tr>
           <tr>
             <td>
               <p>コメント件数：<%= @review.review_comments.count %></p>
@@ -63,9 +61,7 @@
             </td>
             <td>
               <%= review_comment.comment %>
-              <% if review_comment.customer == current_customer %>
                 <%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class: "btn btn-danger pull-right btn-sm" %>
-              <% end %>
             </td>
           </tr>
         <% end %>
