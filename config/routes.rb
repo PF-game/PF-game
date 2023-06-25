@@ -19,7 +19,6 @@ namespace :admin do
   root to: 'homes#top'
   get "search_tag" => "reviews#search_tag"
   get "search" => "searches#search"
-
   resources :reviews, only:[:index, :create, :show, :edit, :update, :destroy]
   resources :customers, only:[:index, :show, :edit, :update]
 

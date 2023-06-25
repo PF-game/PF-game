@@ -32,9 +32,11 @@
                       half: true,
                     })
                   </script>
-                    <p id="favorite_btn_<%= review.id %>" style: "color: #DDE6ED;">
-                      <%= render 'public/favorites/favorite', review: review %>
-                    </p>
+                    <% if current_customer %>
+                      <p id="favorite_btn_<%= review.id %>" style: "color: #DDE6ED;">
+                        <%= render 'public/favorites/favorite', review: review %>
+                      </p>
+                    <% end %>
                     コメント数: <%= review.review_comments.count %>
                       <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
               </div>
