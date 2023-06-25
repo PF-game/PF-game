@@ -13,10 +13,10 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       @review.save_game_tags(tag_list)
       flash[:notice] = "投稿が成功しました"
-      redirect_to reviews_path
+      redirect_to review_path(@review)
     else
       @reviews = Review.all
-      render :index
+      render :new
     end
   end
 
@@ -29,6 +29,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @tag_list = @review.game_tags.pluck(:name).join(',')
     @review_tags = @review.game_tags
+    @review_comment = ReviewComment.new
   end
 
   def destroy
@@ -76,11 +77,5 @@ class Public::ReviewsController < ApplicationController
     params.require(:review).permit(:title, :body, :star)
   end
 
-  # def is_matching_login_user
-  #   review = Review.find(params[:id])
-  #   unless review.id == current_customer.id
-  #     redirect_to edit_review_path
-  #   end
-  # end
 
 end

@@ -1,14 +1,48 @@
 <h2>タグが<%= @tag.name %>の投稿一覧</h2>
 
-  <!--タグリスト-->
-<!--<%# @tag_list.each do |list|%>-->
-<!--  <i class="fa-sharp fa-solid fa-tag"></i>-->
-<!--  <%#=link_to list.name,search_tag_path(game_tag_id: list.id) %>-->
-<!--  <%#="(#{list.reviews.count})" %>-->
+<% @tag_list.each do |list| %>
+  <i class="fa-sharp fa-solid fa-tag"></i>
+  <%= link_to list.name, search_tag_path(game_tag_id: list.id) %>
+  <%= "(#{list.reviews.count})" %>
+<% end %>
 
-<div>
-  <%= render 'index', reviews: @reviews %>
-  <%= paginate @tag_list %>
-</div>
 
-<%# end %>
+<div class="container-fluid mt-3">
+ <div class="items dw-100">
+<div class="row w-100 align-items-center justify-content-center">
+    <div class="card-deck" style="width: 100%;" class="col-sm-3">
+      <% @reviews.each do |review| %>
+      <div class="col-3">
+      <div class="item my-3">
+        <div class="card d-block" style="background-color: #537188;">
+          <%= link_to review_path(review), style: "color: #DDE6ED;" do %>
+        <div class="card-header">
+          <%= image_tag review.customer.get_profile_image, size:'30x30' %>
+          <%= review.customer.name %>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><%= review.title %></h4>
+          <p class="card-text">
+          <div id="star<%= review.id %>"></div>
+          <script>
+            document.getElementById('star<%= review.id %>').innerHTML = ''
+            raty(document.getElementById('star<%= review.id %>'), {
+              starOn: '<%= asset_path('star-on.png') %>',
+              starOff: '<%= asset_path('star-off.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              score: <%= review.star %>,
+              half: true,
+            })
+          </script>
+          </p>
+          <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
+        </div>
+        <% end %>
+      </div>
+      </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+  </div>

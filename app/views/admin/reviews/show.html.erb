@@ -1,17 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <h2>レビュー詳細!!</h2>
+    <div class="col-md-12">
+      <h2>レビュー詳細</h2>
       <table class="table">
         <tr>
           <td>
             <%= link_to(@review.customer) do %>
-            <%= image_tag @review.customer.get_profile_image, size:"100x100" %><br>
+            <%= image_tag @review.customer.get_profile_image, size:"100x100" %>
             <%= @review.customer.name %>
             <% end %>
           </td>
+        </tr>
+        <tr>
           <td><%= link_to @review.title, @review %></td>
+        </tr>
+        <tr>
           <td><%= @review.body %></td>
+        </tr>
+        <tr>
           <td>
             <div id="star<%= @review.id %>"></div>
             <script>
@@ -25,10 +31,48 @@
                 })
             </script>
           </td>
-            <%# if @review.customer == current_customer %>
-          <td><%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-            <%# end %>
         </tr>
+
+         <!-- タグリスト -->
+        <% @review_tags.each do |tag| %>
+        <tr>
+          <td>
+            <i class="fa-sharp fa-solid fa-tag"></i>
+            <%= link_to tag.name, search_tag_path(game_tag_id: tag.id) %>
+          </td>
+        <% end %>
+            <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
+            <%= link_to '削除', @review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        </tr>
+          <tr>
+            <td>
+              <p>コメント件数：<%= @review.review_comments.count %></p>
+            </td>
+          </tr>
+      </table>
+      <table>
+        <% @review.review_comments.each do |review_comment| %>
+          <tr>
+            <td>
+              <%= link_to(@review.customer) do %>
+                <%= image_tag review_comment.customer.get_profile_image, size: '50x50' %><br>
+                <%= review_comment.customer.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= review_comment.comment %>
+                <%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class: "btn btn-danger pull-right btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <table>
+        <div>
+          <%= form_with model: [@review, @review_comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
       </table>
     </div>
   </div>
