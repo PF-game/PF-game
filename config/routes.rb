@@ -19,7 +19,9 @@ namespace :admin do
   root to: 'homes#top'
   get "search_tag" => "reviews#search_tag"
   get "search" => "searches#search"
-  resources :reviews, only:[:index, :create, :show, :edit, :update, :destroy]
+  resources :reviews, only:[:index, :create, :show, :edit, :update, :destroy] do
+    resources :review_comments, only: [:create, :destroy]
+  end
   resources :customers, only:[:index, :show, :edit, :update]
 
 end
@@ -39,7 +41,6 @@ scope module: :public do
   resources :reviews do
     resource :favorites, only: [:create, :destroy]
     resources :review_comments, only: [:create, :destroy]
-
   end
   resources :customers, only:[:show, :edit, :update]
 end

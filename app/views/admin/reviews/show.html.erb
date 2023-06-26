@@ -46,33 +46,15 @@
         </tr>
           <tr>
             <td>
-              <p>コメント件数：<%= @review.review_comments.count %></p>
+              <p>コメント件数：<sp id="comment_count"><%= @review.review_comments.count %></span></p>
             </td>
           </tr>
       </table>
-      <table>
-        <% @review.review_comments.each do |review_comment| %>
-          <tr>
-            <td>
-              <%= link_to(@review.customer) do %>
-                <%= image_tag review_comment.customer.get_profile_image, size: '50x50' %><br>
-                <%= review_comment.customer.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= review_comment.comment %>
-                <%= link_to "削除", review_review_comment_path(review_comment.review, review_comment), method: :delete, class: "btn btn-danger pull-right btn-sm" %>
-            </td>
-          </tr>
-        <% end %>
+      <table id="review-comments">
+        <%= render 'admin/review_comments/show', review: @review %>
       </table>
-      <table>
-        <div>
-          <%= form_with model: [@review, @review_comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </div>
+      <table id="comment-form">
+        <%= render 'admin/review_comments/form', review: @review, review_comment: @review_comment %>
       </table>
     </div>
   </div>

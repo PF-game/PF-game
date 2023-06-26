@@ -1,11 +1,10 @@
 class Public::ReviewCommentsController < ApplicationController
 
 def create
-  review = Review.find(params[:review_id])
+  @review = Review.find(params[:review_id])
   comment = current_customer.review_comments.new(review_comment_params)
-  comment.review_id = review.id
+  comment.review_id = @review.id
   comment.save
-  redirect_to request.referer
 end
 
 def show
@@ -14,9 +13,8 @@ def show
 end
 
 def destroy
-  @review = Review.find(params[:review_id])
   ReviewComment.find(params[:id]).destroy
-  redirect_to request.referer
+  @review = Review.find(params[:review_id])
 end
 
 
