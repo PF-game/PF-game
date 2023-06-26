@@ -23,7 +23,7 @@
 
 
 ## 設計書
-![PF-ER図 drawio](https://github.com/PF-game/PF-game/assets/127410744/1d749f74-9aba-45e0-b656-3654cac0a089)
+- [PF-ER図 drawio](https://github.com/PF-game/PF-game/assets/127410744/1d749f74-9aba-45e0-b656-3654cac0a089)
 
 
 ## 開発環境
