@@ -1,0 +1,14 @@
+<% review.review_comments.each do |review_comment| %>
+  <tr>
+    <td>
+      <%= link_to(review.customer) do %>
+        <%= image_tag review_comment.customer.get_profile_image, size: '50x50' %><br>
+        <%= review_comment.customer.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= review_comment.comment %>
+      <%= link_to "削除", admin_review_review_comment_path(review, review_comment), method: :delete, class: "btn btn-danger pull-right btn-sm", remote:true, data: {"turbolinks" => false} %>
+    </td>
+  </tr>
+<% end %>
