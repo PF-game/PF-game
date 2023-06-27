@@ -23,6 +23,8 @@
 
 
 ## 設計書
+- [UI Flows (admin)](https://github.com/PF-game/PF-game/assets/127410744/7dc3ea05-cd63-4a94-8076-389a2e8b74c2)
+- [UI Flows (User)](https://github.com/PF-game/PF-game/assets/127410744/d9f58845-c8c4-4981-892a-fde0e861b199)
 
 
 ## 開発環境
