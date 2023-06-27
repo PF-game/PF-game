@@ -1,4 +1,4 @@
-<% if current_customer %>
+<% unless current_customer.guest_user? %>
 <div class="mt-2">
   <%= form_with model: [review, review_comment], local: false do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
