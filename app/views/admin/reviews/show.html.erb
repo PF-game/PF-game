@@ -20,16 +20,7 @@
         <tr>
           <td>
             <div id="star<%= @review.id %>"></div>
-            <script>
-              document.getElementById('star<%= @review.id %>').innerHTML = ''
-              raty(document.getElementById('star<%= @review.id %>'), {
-                starOn: '<%= asset_path('star-on.png') %>',
-                starOff: '<%= asset_path('star-off.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                score: <%= @review.star %>,
-                half: true
-                })
-            </script>
+
           </td>
         </tr>
 
@@ -50,12 +41,22 @@
             </td>
           </tr>
       </table>
+        <script>
+          document.getElementById('star<%= @review.id %>').innerHTML = ''
+          raty(document.getElementById('star<%= @review.id %>'), {
+            starOn: '<%= asset_path('star-on.png') %>',
+            starOff: '<%= asset_path('star-off.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @review.star %>,
+            half: true
+          })
+        </script>
       <table id="review-comments">
         <%= render 'admin/review_comments/show', review: @review %>
       </table>
-      <table id="comment-form">
+      <div id="comment-form">
         <%= render 'admin/review_comments/form', review: @review, review_comment: @review_comment %>
-      </table>
+      </div>
     </div>
   </div>
 </div>
