@@ -42,7 +42,7 @@ class Public::ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     @tag_list = @review.game_tags.pluck(:name).join(',')
-    if @review.customer = current_customer
+    if @review.customer == current_customer
       render :edit
     else
       redirect_to reviews_path

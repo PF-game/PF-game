@@ -12,7 +12,7 @@
     <div class="form-group">
       <%= f.label :title,'ゲームタイトル' %>
       <div class="col-md-9">
-      <%= f.text_field :title, class:'from-control' %>
+      <%= f.text_field :title, class:'form-control' %>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
 <div class="form-group">
   <%= f.label :body,'ゲーム内容', class:'col-md-3 col-form-label' %>
   <div class="col-md-9">
-  <%= f.text_area :body, class: 'from-control' %>
+  <%= f.text_area :body, placeholder: '200文字以内で入力してください。', class: 'form-control' %>
   </div>
 </div>
 
