@@ -30,6 +30,7 @@ class Public::ReviewsController < ApplicationController
     @tag_list = @review.game_tags.pluck(:name).join(',')
     @review_tags = @review.game_tags
     @review_comment = ReviewComment.new
+    @customer = Customer.find(params[:id])
   end
 
   def destroy
@@ -41,7 +42,7 @@ class Public::ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     @tag_list = @review.game_tags.pluck(:name).join(',')
-    if @review.customer = current_customer
+    if @review.customer == current_customer
       render :edit
     else
       redirect_to reviews_path

@@ -4,6 +4,7 @@
       <%= link_to(review.customer) do %>
         <%= image_tag review_comment.customer.get_profile_image, size: '50x50' %><br>
         <%= review_comment.customer.name %>
+        <%= review_comment.created_at.strftime('%Y/%m/%d') %>
       <% end %>
     </td>
     <td>
