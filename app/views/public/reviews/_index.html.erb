@@ -33,13 +33,14 @@
                       readOnly: true
                     })
                   </script>
-                    <% if current_customer %>
-                      <p id="favorite_btn_<%= review.id %>" style: "color: #DDE6ED;">
-                        <%= render 'public/favorites/favorite', review: review %>
-                      </p>
-                    <% end %>
-                    コメント数:<span id="comment_count"><%= review.review_comments.count %></span>
-                      <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
+                  コメント数:<span id="comment_count"><%= review.review_comments.count %></span>
+                  <% if current_customer %>
+                  <p id="favorite_btn_<%= review.id %>" style: "color: #DDE6ED;">
+                    <%= render 'public/favorites/favorite', review: review %>
+                  </p>
+                  <% end %>
+                  <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
+                  <p><%= review.created_at.strftime('%Y/%m/%d') %></p>
               </div>
             <% end %>
             </div>
