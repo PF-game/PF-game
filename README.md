@@ -40,4 +40,3 @@
 - [Font Awesome](https://fontawesome.com/)
 - [Canva](https://www.canva.com/ja_jp/create/logos/)
 - ※著作権侵害を防ぐため、ゲーム画像・動画の使用は行いません。
-# PF-game
