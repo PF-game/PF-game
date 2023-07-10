@@ -23,19 +23,20 @@
                   <div class="card-body">
                     <h4 class="card-title"><%= review.title %></h4>
                       <div id="star<%= review.id %>"></div>
-                        <script>
-                          document.getElementById('star<%= review.id %>').innerHTML = ''
-                          raty(document.getElementById('star<%= review.id %>'), {
-                            starOn: '<%= asset_path('star-on.png') %>',
-                            starOff: '<%= asset_path('star-off.png') %>',
-                            starHalf: '<%= asset_path('star-half.png') %>',
-                            score: <%= review.star %>,
-                            half: true,
-                          })
-                        </script>
-                        </p>
-                          コメント数: <%= review.review_comments.count %>
-                        <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
+                      <script>
+                        document.getElementById('star<%= review.id %>').innerHTML = ''
+                        raty(document.getElementById('star<%= review.id %>'), {
+                          starOn: '<%= asset_path('star-on.png') %>',
+                          starOff: '<%= asset_path('star-off.png') %>',
+                          starHalf: '<%= asset_path('star-half.png') %>',
+                          score: <%= review.star %>,
+                          half: true,
+                          readOnly: true
+                        })
+                      </script>
+                      コメント数: <%= review.review_comments.count %>
+                      <p class="card-text"><small><%= truncate(review.body, :length => 15) %></small></p>
+                      <p><%= review.created_at.strftime('%Y/%m/%d') %></p>
                   </div>
               <% end %>
             </div>

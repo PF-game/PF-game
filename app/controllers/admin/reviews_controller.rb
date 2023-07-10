@@ -2,9 +2,9 @@ class Admin::ReviewsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @reviews = Review.all.page(params[:page])
+    @reviews = Review.all.page(params[:page]).order(created_at: :desc)
     @tag_list = GameTag.all
-    
+
   end
 
   def show

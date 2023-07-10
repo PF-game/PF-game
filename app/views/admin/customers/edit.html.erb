@@ -22,9 +22,9 @@
           <td>会員ステータス</td>
           <td>
             <%= f.radio_button :is_deleted, true %>
-            <%= f.label :is_deleted, "無効" %>&emsp;
+            <%= f.label :is_deleted, "無効", value: true %>&emsp;
             <%= f.radio_button :is_deleted, false %>
-            <%= f.label :is_deleted, "有効" %>
+            <%= f.label :is_deleted, "有効", value: false %>
           </td>
         </tr>
         <tr>

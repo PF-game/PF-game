@@ -12,7 +12,10 @@
           </td>
         </tr>
         <tr>
-          <td><%= link_to @review.title, @review %></td>
+          <td>
+            <%= link_to @review.title, @review %>
+            <%= @review.created_at.strftime('%Y/%m/%d') %>
+          </td>
         </tr>
         <tr>
           <td><%= @review.body %></td>
@@ -48,7 +51,8 @@
             starOff: '<%= asset_path('star-off.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
             score: <%= @review.star %>,
-            half: true
+            half: true,
+            readOnly: true
           })
         </script>
       <table id="review-comments">
