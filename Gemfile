@@ -70,3 +70,5 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'jquery-rails'
+
+gem 'rails-i18n'

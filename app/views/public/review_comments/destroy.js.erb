@@ -1,2 +1,7 @@
 $('#review-comments').html("<%= j(render "/public/review_comments/show.html.erb", review: @review) %>");
 $('#comment_count').html("<%= @review.review_comments.count %>")
+
+function check(){
+  if(window.confirm('本当に削除しますか？')){
+    return true;
+}
