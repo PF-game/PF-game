@@ -30,7 +30,6 @@ class Public::ReviewsController < ApplicationController
     @tag_list = @review.game_tags.pluck(:name).join(',')
     @review_tags = @review.game_tags
     @review_comment = ReviewComment.new
-    # @customer = Customer.find(params[:id])
   end
 
   def destroy
