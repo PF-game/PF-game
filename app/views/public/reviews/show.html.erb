@@ -34,7 +34,7 @@
         </tr>
         <% end %>
 
-         <!-- タグリスト -->
+        <!-- タグリスト -->
         <% @review_tags.each do |tag| %>
         <tr>
           <td>
@@ -56,12 +56,12 @@
         <script>
           document.getElementById('star<%= @review.id %>').innerHTML = ''
           raty(document.getElementById('star<%= @review.id %>'), {
-          starOn: '<%= asset_path('star-on.png') %>',
-          starOff: '<%= asset_path('star-off.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          score: <%= @review.star %>,
-          half: true,
-          readOnly: true
+            starOn: '<%= asset_path('star-on.png') %>',
+            starOff: '<%= asset_path('star-off.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @review.star %>,
+            half: true,
+            readOnly: true
           })
         </script>
       <table id="review-comments">
